@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    margin: auto;
+    max-width: 960px; /* Atur lebar maksimum container */
+    padding: 20px;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.header,
+.sidebar,
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.header {
+    background: #3498db;
+    flex: 1;
+    max-width: 960px;
+    height: 80px;
+    justify-content: space-between;
+}
+
+
+
+.sidebar {
+    background: #e74c3c;
+    flex: 1;
+    max-width: 200px;
+    height: 300px;
+    flex-direction: column;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    background: #e74c3c;
+    width: 150px;
+    max-width: 960px; /* Mengatur lebar kartu menjadi penuh sesuai dengan container */
+    height: 150px;
+    flex-direction: column;
+}
+
+.card .loket {
+    margin-top: 10px;
+    width: 100%; /* Mengatur lebar loket menjadi penuh sesuai dengan kartu */
+    height: 100px;
+}
+
+.card .loket2 {
+    width: 100%; /* Mengatur lebar loket2 menjadi penuh sesuai dengan kartu */
+    height: 100px;
+    font-size: 50px;
+}
+
+.sidebar .loket{
+    margin-top: 10px;
+    width: 100%;
+    height: 100px;
+
+}
+.sidebar .loket1{
+    width: 100%;
+    height: 100px;
+
+}
+.sidebar .loket2{
+    width: 100%;
+    height: 100px;
+    font-size: 50px;
+}
+
+.content {
+    background: #2ecc71;
+    flex: 2;
+    max-width: 520px;
+    height: 300px;
+}
+
+.footer {
+    background: #f39c12;
+    flex: 1;
+    max-width: 960px;
+    height: 100px;
+}
+
+.logo {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+
+}
+.logo img {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+.waktu {
+   margin-right: 10px;
+
+}
+
+.button{
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to bottom, rgb(250, 125, 41), rgb(249, 102, 51));
+    font-size: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 2rem;
+    border-radius: 9999px;
+    box-shadow: 3px 5px 20px rgb(250, 125, 41);
+    transition-property: box-shadow;
+    transition-duration: 0.75s;
+    -webkit-transition-property: box-shadow;
+    -webkit-transition-duration: 0.75s;
+    margin-bottom: 50px;
+  }
+  .button:hover{
+    box-shadow: 0 0 0 #fff;
+  }
+
+  .tiket {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+  }
