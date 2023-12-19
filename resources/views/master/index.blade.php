@@ -1,85 +1,141 @@
 @extends('layouts.admin.main')
 @section('body')
-
+<style>
+  .row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    background: #e74c3c;
+    width: 150px;
+    max-width: 960px; /* Mengatur lebar kartu menjadi penuh sesuai dengan container */
+    height: 150px;
+    flex-direction: column;
+  }
+  
+  .card .loket {
+    margin-top: 10px;
+    width: 100%; /* Mengatur lebar loket menjadi penuh sesuai dengan kartu */
+    height: 100px;
+  }
+  
+  .card .loket2 {
+    width: 100%; /* Mengatur lebar loket2 menjadi penuh sesuai dengan kartu */
+    height: 100px;
+    font-size: 50px;
+  }
+  
+  .blue-background {
+    background-color: blue;
+    color: white;
+  }
+  
+  .gray-background {
+    background-color: gray;
+  }
+  
+  .disabled {
+    opacity: 0.5; /* Mengatur tingkat transparansi */
+    cursor: not-allowed;
+    pointer-events: none; /* Menonaktifkan interaksi mouse */
+  }
+</style>
 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-
-      <div class="col-lg-4 col-md-4 order-1">
-        <div class="row">
-          <div class="col-lg-6 col-md-12 col-6 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                  <div class="avatar flex-shrink-0">
-                    <img
-                      src="{{ asset ('assets/admin_template/img/icons/unicons/chart-success.png') }}"
-                      alt="chart success"
-                      class="rounded"
-                    />
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      id="cardOpt3"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                  </div>
-                </div>
-                <span class="fw-semibold d-block mb-1">Profit</span>
-                <h3 class="card-title mb-2">$12,628</h3>
-                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12 col-6 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                  <div class="avatar flex-shrink-0">
-                    <img
-                      src="{{ asset ('assets/admin_template/img/icons/unicons/wallet-info.png') }}"
-                      alt="Credit Card"
-                      class="rounded"
-                    />
-                  </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      id="cardOpt6"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                  </div>
-                </div>
-                <span>Sales</span>
-                <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
+  <div class="row">
+    <input type="hidden" id="loketUser" value="{{ auth()->user()->loket }}">
+    <button class="card" id="loket1" value="1" onclick="setUserLoket(1)">
+      <div class="loket">LOKET 1</div>
+  </button>
+  <button class="card" id="loket2" value="2" onclick="setUserLoket(2)">
+      <div class="loket">LOKET 2</div>
+  </button>
+  <button class="card" id="loket3" value="3" onclick="setUserLoket(3)">
+      <div class="loket">LOKET 3</div>
+  </button>
+  <button class="card" id="loket4" value="4" onclick="setUserLoket(4)">
+      <div class="loket">LOKET 4</div>
+  </button>
+  <button class="card" id="loket5" value="5" onclick="setUserLoket(5)">
+      <div class="loket">LOKET 5</div>
+  </button>
+    
   </div>
+  
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  // Simulasikan nilai loket dari pengguna
+  var userLoket = document.getElementById('loketUser').value ;
+  // Fungsi untuk mengatur warna latar belakang kartu berdasarkan nilai loket
+  function setCardColor() {
+    for (let i = 1; i <= 5; i++) {
+      const card = document.getElementById('loket' + i);
+      if (i == userLoket) {
+        card.classList.add('blue-background');
+      } else {
+        card.classList.add('gray-background');
+      }
+    }
+  }
+  
+  // Panggil fungsi saat halaman dimuat
+  setCardColor();
+</script>
+
+<script>
+  function setUserLoket(loketNumber) {
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        }
+                    });
+
+
+      // Assuming you have a function to get the value
+      var valueToSend = loketNumber;
+
+      // Using jQuery Ajax
+      $.ajax({
+          type: "POST", // You can also use "GET" depending on your server setup
+          url: "{{ route('loket') }}", // Replace with your server endpoint
+          data: { value: valueToSend },
+          success: function(response) {
+              // Handle the response from the server
+              Swal.fire({
+                    title: "Good job!",
+                    text: response.message,
+                    icon: "success"
+                    }).then(function() {
+                        // Redirect to the specified URL
+                        window.location.href = "{{ route('dashboard') }}";
+                    });
+          },
+          error: function(error) {
+              
+              Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.responseJSON.message,
+                    footer: ''
+                    });
+          }
+      });
+  }
+</script>
 
 @endsection

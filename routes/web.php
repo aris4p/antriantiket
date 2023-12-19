@@ -32,7 +32,8 @@ Route::post('/tiket', [AntrianController::class, 'create'])->name('create-tiket'
 Route::get('/login', [AuthController::class, 'index']);
 Route::post('/login', [AuthController::class, 'auth'])->name('login');
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/loket', [DashboardController::class, 'loket'])->name('loket');
 
 Route::get('/antri', [AntrianController::class, 'index'])->name('daftar-antrian');
 Route::post('/antri/getantrian', [AntrianController::class, 'getAntrian'])->name('get-antrian');
