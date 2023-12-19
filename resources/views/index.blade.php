@@ -20,39 +20,39 @@
             </div>
         </div>
         <div class="row">
-            <div class="sidebar">
-                <div class="loket">LOKET 1</div>
+            <div class="sidebar" id="cs">
+                <div class="loket" id="cs">LOKET 1</div>
                 <div class="loket1">Nomor Antrian</div>
                 <div class="loket2">---</div>
             </div>
-            <div class="sidebar">
-                <div class="loket">LOKET 2</div>
+            <div class="sidebar" id="teller">
+                <div class="loket" >LOKET 2</div>
                 <div class="loket1">Nomor Antrian</div>
                 <div class="loket2">---</div>
             </div>
 
             <div class="content">
-                <iframe width="740px" height="300px" src="https://www.youtube.com/embed/5uKpgxKrDr8?playlist=5uKpgxKrDr8&autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                {{-- <iframe width="740px" height="300px" src="https://www.youtube.com/embed/5uKpgxKrDr8?playlist=5uKpgxKrDr8&autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --}}
             </div>
         </div>
         <div class="row">
-            <div class="card">
+            <div class="card" id="loket1">
                 <div class="loket">LOKET 1</div>
                 <div class="loket2">---</div>
             </div>
-            <div class="card">
+            <div class="card" id="loket2">
                 <div class="loket">LOKET 2</div>
                 <div class="loket2">---</div>
             </div>
-            <div class="card">
+            <div class="card" id="loket3">
                 <div class="loket">LOKET 3</div>
                 <div class="loket2">---</div>
             </div>
-            <div class="card">
+            <div class="card" id="loket4">
                 <div class="loket">LOKET 4</div>
                 <div class="loket2">---</div>
             </div>
-            <div class="card">
+            <div class="card" id="loket5">
                 <div class="loket">LOKET 5</div>
                 <div class="loket2">---</div>
             </div>
@@ -64,20 +64,7 @@
             </div>
         </div>
     </div>
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    <script>
+    @vite('resources/js/app.js')
 
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('309bd6ebbb64634309cd', {
-            cluster: 'ap1'
-        });
-
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
-        });
-    </script>
 </body>
 </html>

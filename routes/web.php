@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\TampilAntrian;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', function(){
+   
+});
 Route::get('/antrian', function(){
     return view('index');
 });
@@ -32,5 +36,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/antri', [AntrianController::class, 'index'])->name('daftar-antrian');
 Route::post('/antri/getantrian', [AntrianController::class, 'getAntrian'])->name('get-antrian');
+Route::get('/antri/currentantrian', [AntrianController::class, 'currentantrian'])->name('current-antrian');
+Route::post('/antri/antrianselesai', [AntrianController::class, 'antrianselesai'])->name('antrian-selesai');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

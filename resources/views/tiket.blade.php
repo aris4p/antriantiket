@@ -15,7 +15,7 @@
                     Bank BangTut
                 </div>
                 <div class="waktu">Waktu Sekarang
-                    <div class="jam" id="jam">12:29</div>
+                    <div class="jam" id="jam"></div>
                 </div>
             </div>
         </div>
@@ -33,6 +33,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Menambahkan event listener untuk tombol Customer Service
@@ -72,8 +74,6 @@
             // Menggabungkan prefix dan nomor tiket untuk ditampilkan
             let ticketNumber = prefix + padNumber(lastTicketNumber);
 
-            // Menampilkan nomor tiket
-            alert("Your Ticket Number: " + ticketNumber);
 
             // Menyimpan ke database menggunakan AJAX
             $.ajax({
@@ -81,7 +81,11 @@
                 url: "{{ route('create-tiket') }}", // Gantilah dengan nama file PHP yang sesuai
                 data: { category: prefix, ticket_number: ticketNumber,  _token: '{{ csrf_token() }}' },
                 success: function(response) {
-                    alert("Your Ticket Number: " + ticketNumber);
+                    Swal.fire({
+                    title: response.data.kode_antrian,
+                    text: "Berhasil !!!",
+                    icon: "success"
+                    });
                 },
                 error: function(error) {
                     console.error("Error:", error);
@@ -103,6 +107,30 @@
         function padNumber(number) {
             return number.toString().padStart(3, "0");
         }
+
+
+        function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Add leading zero if needed
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        var timeString = hours + ':' + minutes + ':' + seconds;
+
+        document.getElementById('jam').innerHTML = timeString;
+    }
+
+    // Update the clock every second (1000 milliseconds)
+    setInterval(updateClock, 1000);
+
+    // Initial update to set the clock immediately
+    updateClock();
     </script>
+
 </body>
 </html>

@@ -38,6 +38,7 @@
 
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
    $(document).ready(function() {
         $(".item-row").click(function() {
@@ -56,9 +57,23 @@
                 data: { antrian_id: antrianId, user_id: userId,  _token: '{{ csrf_token() }}' },
                 success: function(response) {
                     console.log(response);
+                    Swal.fire({
+                    title: "Good job!",
+                    text: response.message,
+                    icon: "success"
+                    }).then(function() {
+                        // Redirect to the specified URL
+                        window.location.href = "{{ route('current-antrian') }}";
+                    });
                 },
                 error: function(error) {
-                    console.error("Error:", error);
+                    console.error("Error:", error.responseJSON.message);
+                    Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.responseJSON.message,
+                    footer: ''
+                    });
                 }
             });
         });

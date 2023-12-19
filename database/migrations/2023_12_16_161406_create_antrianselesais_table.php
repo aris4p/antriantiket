@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daftarantrians', function (Blueprint $table) {
+        Schema::create('antrianselesais', function (Blueprint $table) {
             $table->id();
-            $table->string('antrian_id');
-            $table->string('user_id');
-            $table->integer('status');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('daftarantrian');
+        Schema::dropIfExists('antrianselesais');
     }
 };

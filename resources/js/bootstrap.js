@@ -31,4 +31,47 @@ window.Echo = new Echo({
     enabledTransports: ['ws', 'wss'],
 });
 
+function updateLoket(event) {
+    // Mendapatkan elemen-elemen loket
+    var cs = document.getElementById('cs');
+    var teller = document.getElementById('teller');
+
+    // Menggabungkan nilai loket dan kode_antrian
+    var kode =  event.message.kode_antrian;
+    
+    var layanan = event.message.type_antrian;
+
+    // Memperbarui elemen loket1
+    if (layanan == "customer_service") {
+        cs.querySelector('.loket2').innerHTML = kode;
+    }
+    // Memperbarui elemen loket2
+    else if (layanan == "teller") {
+        teller.querySelector('.loket2').innerHTML = kode;
+    }
+}
+
+function loket(event){
+    var loket = event.message.loket_antrian;
+
+    for (var i = 1; i <= 5; i++) {
+        var loketElement = document.getElementById('loket' + i);
+
+        if (loketElement && i == loket) {
+            loketElement.querySelector('.loket2').innerHTML = event.message.kode_antrian;
+        }
+    }
+}
+
+
+
+window.Echo.channel('message').listen('.my-event', (event) => {
+    console.log("Listen Berhasil");
+    console.log(event.message.kode_antrian);
+    console.log(event.message.type_antrian);
+    console.log(event.message.loket_antrian);
+    loket(event);
+    updateLoket(event);
+
+});
 

@@ -148,7 +148,7 @@
                           </a>
                         </li>
                         <li class="menu-item">
-                          <a href="pages-account-settings-notifications.html" class="menu-link">
+                          <a href="{{ route('current-antrian') }}" class="menu-link">
                             <div data-i18n="Notifications">Antrian Yang Diambil</div>
                           </a>
                         </li>
