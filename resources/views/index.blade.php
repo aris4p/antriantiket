@@ -15,7 +15,7 @@
                     Bank BangTut
                 </div>
                 <div class="waktu">Waktu Sekarang
-                    <div class="jam">12:29</div>
+                    <div class="jam" id="jam"></div>
                 </div>
             </div>
         </div>
@@ -65,6 +65,28 @@
         </div>
     </div>
     @vite('resources/js/app.js')
+<script>
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
 
+        // Add leading zero if needed
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        var timeString = hours + ':' + minutes + ':' + seconds;
+
+        document.getElementById('jam').innerHTML = timeString;
+    }
+
+    // Update the clock every second (1000 milliseconds)
+    setInterval(updateClock, 1000);
+
+    // Initial update to set the clock immediately
+    updateClock();
+</script>
 </body>
 </html>
