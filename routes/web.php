@@ -31,7 +31,7 @@ Route::get('/antrian', function(){
 Route::get('/tiket', [TiketController::class, 'index']);
 Route::post('/tiket', [AntrianController::class, 'create'])->name('create-tiket');
 
-Route::get('/login', [AuthController::class, 'index']);
+Route::get('/login', [AuthController::class, 'index'])->middleware('guest');
 Route::post('/login', [AuthController::class, 'auth'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/antri/getantrian', [AntrianController::class, 'getAntrian'])->name('get-antrian');
     Route::get('/antri/currentantrian', [AntrianController::class, 'currentantrian'])->name('current-antrian');
     Route::post('/antri/antrianselesai', [AntrianController::class, 'antrianselesai'])->name('antrian-selesai');
+    Route::get('/antri/riwayatantrian', [AntrianController::class, 'riwayatantrian'])->name('antrian-riwayat');
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -10,6 +10,7 @@ use App\Models\Antrianselesai;
 use App\Models\Currentantrian;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class AntrianController extends Controller
 {
@@ -132,6 +133,32 @@ class AntrianController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'berhasil'
+        ]);
+    }
+
+    public function riwayatantrian(){
+
+        if (request()->ajax()) {
+            $antrian = DB::select('select * from antrianselesais');
+            return DataTables::of($antrian)
+            ->addIndexColumn()
+            ->addColumn('action', function ($item) {
+                $button =   '<div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                </ul>
+                            </div> ';
+                return $button;
+            })
+            ->make();
+        }
+
+        return view('antrian.riwayatantrian',[
+            'title'=>"Riwayat Antrian"
         ]);
     }
 }

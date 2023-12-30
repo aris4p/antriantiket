@@ -14,6 +14,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset ('assets/admin_template/img/favicon/favicon.ico') }}" />
     {{-- datatables --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="///cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <!-- Fonts -->
@@ -155,9 +156,9 @@
                       </ul>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link ">
+                    <a href="{{ route('antrian-riwayat') }}" class="menu-link ">
                         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                        <div data-i18n="Transaksi">Transaksi</div>
+                        <div data-i18n="Riwayat Antrian">Riwayat Antrian</div>
                     </a>
                 </li>
 
