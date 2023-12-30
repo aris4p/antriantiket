@@ -22,7 +22,13 @@
                   <div class="text-center">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                       style="width: 185px;" alt="logo">
-                    <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                    <h4 class="mt-1 mb-5 pb-1">We are Creativeme.tech</h4>
+                  </div>
+
+                  <div class="text-center">
+                    <h5>Username: arisanggara72@gmail.com</h5>
+                    <h5>Username: andifirmansyah@gmail.com</h5>
+                    <h5>Password: traine123</h5>
                   </div>
 
                   <form action="{{ route('login') }}" method="POST">
@@ -43,13 +49,9 @@
                     <div class="text-center pt-1 mb-5 pb-1">
                       <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log
                         in</button>
-                      <a class="text-muted" href="#!">Forgot password?</a>
                     </div>
 
-                    <div class="d-flex align-items-center justify-content-center pb-4">
-                      <p class="mb-0 me-2">Don't have an account?</p>
-                      <button type="button" class="btn btn-outline-danger">Create new</button>
-                    </div>
+                   
 
                   </form>
 
