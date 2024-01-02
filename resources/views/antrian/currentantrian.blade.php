@@ -14,8 +14,8 @@
         <div class="card h-100">
           {{-- <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"> --}}
           <div class="card-body">
-            <h5 class="card-title text-center" id="kodeantrian" data-kode="{{ $currentAntrian->antrian->kode_antrian}}">{{ $currentAntrian->antrian->kode_antrian ?? '--'}}</h5>
-            <h5 class="card-title text-center" id="loket" data-loket="{{ $currentAntrian->user->loket}}">{{ $currentAntrian->user->name ?? '--'}}</h5>
+            <h5 class="card-title text-center" id="kodeantrian" data-kode="{{ $currentAntrian->antrian->kode_antrian ?? '--'}}">{{ $currentAntrian->antrian->kode_antrian ?? '--'}}</h5>
+            <h5 class="card-title text-center" id="loket" data-loket="{{ $currentAntrian->user->loket ?? '--'}}">{{ $currentAntrian->user->name ?? '--'}}</h5>
             {{-- <p class="card-text">
               Some quick example text to build on the card title and make up the bulk of the card's content.
             </p> --}}
