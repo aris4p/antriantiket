@@ -21,12 +21,12 @@
         </div>
         <div class="row">
             <div class="sidebar" id="cs">
-                <div class="loket" id="cs">LOKET 1</div>
+                <div class="loket" id="cs">Loket -</div>
                 <div class="loket1">Nomor Antrian</div>
                 <div class="loket2">---</div>
             </div>
             <div class="sidebar" id="teller">
-                <div class="loket" >LOKET 2</div>
+                <div class="loket" >Loket -</div>
                 <div class="loket1">Nomor Antrian</div>
                 <div class="loket2">---</div>
             </div>

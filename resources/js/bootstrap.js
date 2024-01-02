@@ -40,14 +40,17 @@ function updateLoket(event) {
     var kode =  event.message.kode_antrian;
     
     var layanan = event.message.type_antrian;
+    let loketCT = event.message.loket_antrian;
 
     // Memperbarui elemen loket1
     if (layanan == "customer_service") {
         cs.querySelector('.loket2').innerHTML = kode;
+        cs.querySelector('.loket').innerHTML = "Loket "+loketCT;
     }
     // Memperbarui elemen loket2
     else if (layanan == "teller") {
         teller.querySelector('.loket2').innerHTML = kode;
+        teller.querySelector('.loket').innerHTML = "Loket "+loketCT;
     }
 }
 
