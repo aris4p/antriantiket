@@ -10,7 +10,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Antrian ID</th>
+                            <th>Kode Antrian</th>
                             <th>Status Antrian</th>
                             <th>Aksi</th>
                         </tr>
@@ -39,8 +39,8 @@
                             width: '5%'
                         },
                         { 
-                            data: 'antrian_id',
-                            name: 'antrian_id',
+                            data: 'kode_antrian',
+                            name: 'kode_antrian',
                             orderable: true,
                             searchable: true,
                             width: '25%'

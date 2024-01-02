@@ -139,7 +139,11 @@ class AntrianController extends Controller
     public function riwayatantrian(){
 
         if (request()->ajax()) {
-            $antrian = DB::select('select * from antrianselesais');
+            $antrian = DB::table('antrianselesais')
+            ->join('antrians', 'antrianselesais.antrian_id', '=', 'antrians.id')
+            ->select('antrianselesais.*', 'antrians.id','antrians.kode_antrian')
+            ->get();
+        
             return DataTables::of($antrian)
             ->addIndexColumn()
             ->addColumn('action', function ($item) {
@@ -148,8 +152,7 @@ class AntrianController extends Controller
                                     Action
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    <li><a class="dropdown-item" href="#">Lihat Data</a></li>
                                 </ul>
                             </div> ';
                 return $button;
